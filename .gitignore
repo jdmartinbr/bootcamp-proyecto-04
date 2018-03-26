@@ -1,0 +1,6 @@
+.idea
+/DB
+/bower_components
+layout.jpg
+/node_modules
+package-lock.json
