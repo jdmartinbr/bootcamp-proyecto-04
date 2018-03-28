@@ -11,19 +11,24 @@
                     {{#if register}}
                         <p>¡Te has registrado correctamente! Ya puedes iniciar sesion.</p>
                     {{/if}}
-                    <form>
+                    {{#if errorUsuario}}
+                        <p>El usuario no existe</p>
+                    {{/if}}
+                    {{#if errorPassword}}
+                        <p>La contraseña es incorrecta</p>
+                    {{/if}}
+                    <form method="post" action="/loginok">
                         <div class="mt-5 form-row">
                             <div class="col-12 offset-md-2 col-md-8 form-group">
-                                <input type="text" class="form-control" id="login-name" placeholder="Nombre">
+                                <input name="usuario_login" type="text" class="form-control" id="login-name" placeholder="Nombre">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12 offset-md-2 col-md-8">
-                                <input type="password" class="form-control" id="login-password" placeholder="Correo Electrónico">
+                                <input name="password_login" type="password" class="form-control" id="login-password" placeholder="Correo Electrónico">
                             </div>
                         </div>
-                        <button id="login-submit" type="submit" class="col-12 offset-md-2 col-md-4 btn btn-login">Enviar
-                        </button>
+                        <button id="login-submit" type="submit" class="col-12 offset-md-2 col-md-4 btn btn-login">Enviar</button>
                         <div class="remember-password">
                             <a class="" data-toggle="modal" data-target="#exampleModalCenter">¿No recuerdas tu contraseña?</a>
                         </div>

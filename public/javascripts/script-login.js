@@ -4,7 +4,6 @@ $(document).ready(function () {
         let passwordLogin = $('#login-password').val();
         let encrypted = CryptoJS.AES.encrypt(passwordLogin, "Secret Passphrase");
         let decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase").toString(CryptoJS.enc.Utf8);
-        alert('Password: ' + decrypted + '\n' + 'Encriptada: ' +encrypted);
     });
 
     $("#login-submit").click(function () {
@@ -13,15 +12,6 @@ $(document).ready(function () {
         localStorage.setItem('user', userName);
         localStorage.setItem('password', userPassword);
     });
-
-    // $('#login-submit').click(function () {
-    //     console.log('asdas');
-    //     if ($('#login-name').val() !== $('#login-password').val()) {
-    //         alert('repite las contrasñas')
-    //     }
-    // });
-
-
 
     $(window).on('scroll', function () {
         if($(window).scrollTop()===0 && $("#menu-toggler").attr("aria-expanded")===true) {
