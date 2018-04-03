@@ -1,14 +1,13 @@
 let express = require('express');
 let router = express.Router();
+let bcrypt = require('bcrypt-nodejs');
 let usersModel = require('../models/usersModels');
-//let destinos = require('../public/data/destinos.js');
+let destinos = [];
 
 router.get('/', function(req, res, next) {
-    let destinos = [];
     usersModel.getDestinos(function (err, dest) {
        if (err) return res.status(500).json(err);
        destinos = dest;
-       console.log(dest);
           res.render('main.hbs', {
               title: 'Geekshubs Travell',
               layout: 'template',
@@ -32,10 +31,12 @@ router.get('/registro', function(req, res, next) {
 });
 
 router.post('/registerok', function(req, res){
+    let hash = bcrypt.hashSync(req.body.password_sec);
     let user = {
         usuario: req.body.usuario,
         email: req.body.email,
-        password: req.body.password_sec
+        password: req.body.password_sec,
+        hash: hash
     };
     usersModel.register(user, function (err, data) {
         if (err) return res.status(500).json(err);

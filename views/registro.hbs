@@ -9,10 +9,14 @@
                     </div>
                     <hr>
                     {{#if errorUsuario}}
-                        <p>Error Usuario</p>
+                        <div class="alert alert-warning">
+                            <p>Error Usuario</p>
+                        </div>
                     {{/if}}
                     {{#if errorEmail}}
-                        <p>Error Email</p>
+                        <div class="alert alert-warning">
+                            <p>Error Email</p>
+                        </div>
                     {{/if}}
                     <form method="post" action="/registerok">
                         <div class="mt-5 form-row">

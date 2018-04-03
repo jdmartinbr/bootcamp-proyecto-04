@@ -5,7 +5,6 @@ $("#inputPassword2").keyup(function(){
     var pw2 = $("#inputPassword2").val().length;
     var pw11 = $("#inputPassword1").val();
     var pw22 = $("#inputPassword2").val();
-    var encode;
 
     if((pw1 !== pw2)&&(pw11 !== pw22))
     {
@@ -19,9 +18,10 @@ $("#inputPassword2").keyup(function(){
 
 $(function()
 {
-    $('#checkb').click(function()
-    {
-        if($(this).is(':checked'))
+    $('#checkb').click(function(){
+        var pw11 = $("#inputPassword1").val();
+        var pw22 = $("#inputPassword2").val();
+        if($(this).is(':checked') && pw11 === pw22)
         {
             ($("#regbutton")).removeClass('disabled');
             ($("#regbutton")).removeAttr('disabled');
@@ -69,11 +69,10 @@ $(window).on('scroll', function () {
     };
 });
 
-$('#regbutton').on('click', function () {
+$('#regbutton').on('click', function (){
     let passwordRegister = $('#regbutton').val();
     let encrypted = CryptoJS.AES.encrypt(passwordRegister, "Secret Passphrase");
     let decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase").toString(CryptoJS.enc.Utf8);
-    //alert('Password: ' + decrypted + '\n' + 'Encriptada: ' +encrypted);
     if(passwordRegister)
     localStorage.setItem('password', encrypted);
 });

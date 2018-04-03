@@ -9,13 +9,19 @@
                     </div>
                     <hr>
                     {{#if register}}
-                        <p>¡Te has registrado correctamente! Ya puedes iniciar sesion.</p>
+                        <div class="alert alert-success">
+                            <p>¡Te has registrado correctamente! Ya puedes iniciar sesion.</p>
+                        </div>
                     {{/if}}
                     {{#if errorUsuario}}
-                        <p>El usuario no existe</p>
+                        <div class="alert alert-warning">
+                            <p>El usuario no existe</p>
+                        </div>
                     {{/if}}
                     {{#if errorPassword}}
-                        <p>La contraseña es incorrecta</p>
+                        <div class="alert alert-warning">
+                            <p>La contraseña es incorrecta</p>
+                        </div>
                     {{/if}}
                     <form method="post" action="/loginok">
                         <div class="mt-5 form-row">
@@ -25,7 +31,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-12 offset-md-2 col-md-8">
-                                <input name="password_login" type="password" class="form-control" id="login-password" placeholder="Correo Electrónico">
+                                <input name="password_login" type="password" class="form-control" id="login-password" placeholder="Contraseña">
                             </div>
                         </div>
                         <button id="login-submit" type="submit" class="col-12 offset-md-2 col-md-4 btn btn-login">Enviar</button>
